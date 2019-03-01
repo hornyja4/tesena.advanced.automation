@@ -32,12 +32,15 @@ public class Driver {
                 case LINUX: case XP: case UNIX: case WINDOWS:
                     remoteWebDriver = new RemoteWebDriver
                             (new URL(server), capabilities);
+                    break;
                 case ANDROID:
                     remoteWebDriver = new AndroidDriver<MobileElement>
                             (new URL(server), capabilities);
+                    break;
                 case IOS:
                     remoteWebDriver = new IOSDriver<MobileElement>
                             (new URL(server), capabilities);
+                    break;
                 default:
                     throw new RuntimeException("Unknown driver type " + capabilities.getPlatform());
             }
