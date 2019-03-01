@@ -10,13 +10,6 @@ public abstract class PageObject {
 
     public PageObject(Driver driver) {
         this.driver = driver;
-        POFactory.initElements(this, driver.getRemoteWebDriver());
-        synchronize();
-    }
-
-    public abstract void synchronize();
-
-    protected void waitForElement(WebElement webElement) {
-        driver.waitForElement(webElement);
+        POFactory.processPageObjectComponents(this, driver);
     }
 }

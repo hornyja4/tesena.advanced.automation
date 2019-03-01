@@ -17,7 +17,7 @@ public class MobileTest {
     @BeforeClass
     @Parameters({"platform", "automationName", "udid", "version", "server"})
     public void init(@Optional("ANDROID") String platform, @Optional("UIAutomator2") String automationName, @Optional("") String udid,
-                     @Optional("") String version, @Optional("http://localhost:4723/wd/hub") String sever) {
+                     @Optional("") String version, @Optional("http://localhost:4444/wd/hub") String sever) {
         File app = new File("src\\test\\resources\\sazka.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setPlatform(Platform.valueOf(platform));
@@ -25,6 +25,7 @@ public class MobileTest {
         capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         //capabilities.setCapability("appPackage", "cz.sazka.loterie");
         //capabilities.setCapability("appActivity", ".activity.main.SplashScreenActivity");
+        //capabilities.setCapability("appWaitActivity", ".activity.main.SplashScreenActivity");
         capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
         capabilities.setCapability("server", sever);
@@ -36,6 +37,7 @@ public class MobileTest {
             capabilities.setCapability(MobileCapabilityType.UDID, udid);
         }
         driver = new Driver(capabilities);
+        String email = "hornych.h@gmail.com";
     }
 
 }

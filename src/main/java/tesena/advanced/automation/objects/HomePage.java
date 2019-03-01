@@ -1,28 +1,18 @@
 package tesena.advanced.automation.objects;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import org.openqa.selenium.WebElement;
 import tesena.advanced.automation.Driver;
 import tesena.advanced.automation.PageObject;
+import tesena.advanced.automation.components.LoginButton;
 
 public class HomePage extends PageObject {
 
-    @iOSXCUITFindBy(xpath = "//a[]")
-    @AndroidFindBy(xpath = "//a[]")
-    private MobileElement header;
-
-    @AndroidFindBy(xpath = "//button[@id='login']")
-    private MobileElement loginButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='cz.sazka.loterie:id/login']")
+    private LoginButton loginButton;
 
     public HomePage(Driver driver) {
         super(driver);
-    }
-
-    @Override
-    public void synchronize() {
-        waitForElement(header);
-        waitForElement(loginButton);
     }
 
     public LoginPage clickToLoginButton() {

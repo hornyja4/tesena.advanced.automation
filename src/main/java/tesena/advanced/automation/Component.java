@@ -7,59 +7,74 @@ import java.util.List;
 
 
 public class Component implements WebElement {
+    private Driver driver;
+    private String xpath;
 
     public Component(Driver driver) {
+        this.driver = driver;
+    }
 
+    public String getXpath() {
+        return xpath;
+    }
+
+    private WebElement findElement() {
+        driver.waitForElement(xpath);
+        return driver.findElement(xpath);
+    }
+
+    public void setXpath(String xpath) {
+        this.xpath = xpath;
     }
 
     @Override
     public void click() {
-
+        findElement().click();
     }
 
     @Override
     public void submit() {
-
+        findElement().submit();
     }
 
     @Override
     public void sendKeys(CharSequence... charSequences) {
-
+        findElement().sendKeys(charSequences);
     }
 
     @Override
     public void clear() {
-
+        findElement().clear();
     }
 
     @Override
     public String getTagName() {
-        return null;
+        return findElement().getTagName();
     }
 
     @Override
     public String getAttribute(String s) {
-        return null;
+        return findElement().getAttribute(s);
     }
 
     @Override
     public boolean isSelected() {
-        return false;
+        return findElement().isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return findElement().isEnabled();
     }
 
     @Override
     public String getText() {
-        return null;
+        return findElement().getText();
     }
 
     @Override
     public List<WebElement> findElements(By by) {
-        return null;
+        return findElement().findElements(by);
     }
 
     @Override
@@ -69,31 +84,31 @@ public class Component implements WebElement {
 
     @Override
     public boolean isDisplayed() {
-        return false;
+        return findElement().isDisplayed();
     }
 
     @Override
     public Point getLocation() {
-        return null;
+        return findElement().getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        return null;
+        return findElement().getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        return null;
+        return findElement().getRect();
     }
 
     @Override
     public String getCssValue(String s) {
-        return null;
+        return findElement().getCssValue(s);
     }
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-        return null;
+        return findElement().getScreenshotAs(outputType);
     }
 }

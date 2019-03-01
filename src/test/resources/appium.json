@@ -1,12 +1,12 @@
 {
     "capabilities": [
         {
-            "browserName": "Chrome",
             "maxInstances": 1,
             "deviceName": "Huawei P9",
+            "version": "8.0",
+            "seleniumProtocol":"WebDriver",
             "platformName": "android",
-            "platform": "ANDROID",
-            "udid": ""
+            "platform": "ANDROID"
         }
     ],
     "configuration": {

@@ -10,7 +10,7 @@ public class LoginTest extends MobileTest {
     public void login() {
         HomePage homePage = new HomePage(driver);
         homePage.clickToLoginButton()
-                .login("johny", "123456");
+                .login("johnz", "johny");
     }
 
 }

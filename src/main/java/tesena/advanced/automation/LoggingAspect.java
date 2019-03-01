@@ -14,8 +14,16 @@ public class LoggingAspect {
     public void pageObjectMethods() {
     }
 
-    @Before("pageObjectMethods()")
-    public void loggingPageObjectMethod(JoinPoint joinPoint) {
+    @Pointcut("execution(* *.*(..)) && this(tesena.advanced.automation.Component+)")
+    public void componentsMethods() {
+    }
+
+    @Pointcut("execution(* *.*(..)) && this(tesena.advanced.automation.Driver)")
+    public void driversMethods() {
+    }
+
+    @Before("pageObjectMethods() || componentsMethods()")
+    public void loggingMethods(JoinPoint joinPoint) {
         String className = joinPoint.getThis().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
         Object[] arguments = joinPoint.getArgs();
