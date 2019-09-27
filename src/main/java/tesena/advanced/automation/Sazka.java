@@ -6,15 +6,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import tesena.advanced.automation.driver.Driver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Listeners(SazkaTestListener.class)
 public class Sazka {
     protected Driver driver;
 

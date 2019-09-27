@@ -10,6 +10,8 @@ import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.PageObject;
 import tesena.advanced.automation.objects.lotteries.LotteryNumbersSelectPage;
 
+import java.util.Arrays;
+
 public class EurojackpotBetNumbersSelectPage extends LotteryNumbersSelectPage {
 
     @AndroidXpath(xpath = "//*[contains(@resource-id, 'recyclerAuxColumnTip')]")
@@ -28,6 +30,7 @@ public class EurojackpotBetNumbersSelectPage extends LotteryNumbersSelectPage {
     }
 
     public EurojackpotBetNumbersSelectPage selectSecondRowNumbers(String... numbers) {
+        logger.info("Selecting numbers: " + Arrays.toString(numbers));
         if (numbers.length != 2) {
             throw new RuntimeException("Count of bet numbers must be equal to 2");
         }

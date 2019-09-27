@@ -5,9 +5,6 @@ import tesena.advanced.automation.driver.Driver;
 
 public class LotteryBanner extends Component {
 
-    @AndroidXpath(xpath = "")
-    private Button component;
-
     public LotteryBanner(Driver driver) {
         super(driver);
     }
