@@ -2,10 +2,11 @@ package tesena.advanced.automation.components;
 
 import org.openqa.selenium.*;
 import tesena.advanced.automation.driver.Driver;
+import tesena.advanced.automation.factories.POFactory;
 
 import java.util.List;
 
-public class Component implements WebElement {
+public abstract class Component implements WebElement {
     private Driver driver;
     private String xpath;
 
