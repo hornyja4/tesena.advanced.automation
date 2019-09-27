@@ -11,6 +11,6 @@ import java.time.Duration;
 public class POFactory {
 
     public static void initElements(PageObject object, AppiumDriver<MobileElement> appiumDriver) {
-        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver, Duration.ofSeconds(10)), object);
+        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver, Duration.ofSeconds(1)), object);
     }
 }

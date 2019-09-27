@@ -2,11 +2,10 @@ package tesena.advanced.automation.objects;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.functions.ExpectedCondition;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import tesena.advanced.automation.factories.POFactory;
@@ -33,5 +32,32 @@ public abstract class PageObject {
             }
         };
         wait.until(input -> expectation.apply(driver));
+    }
+
+    protected MobileElement scrollToElement(MobileElement element) {
+        Dimension dimension = driver.manage().window().getSize();
+        int width = dimension.getWidth();
+        int height = dimension.getHeight();
+        TouchAction touchAction = new TouchAction(driver);
+
+        int counter = 0;
+        while (!isDisplayed(element) && counter++ < 5) {
+            touchAction.longPress(PointOption.point((int) (width * 0.5), (int) (height * 0.8)))
+                    .moveTo(PointOption.point((int) (width * 0.5), (int) (height * 0.3)))
+                    .release()
+                    .perform();
+        }
+        if (!isDisplayed(element)) {
+            throw new RuntimeException(element + " is not visible after 5 scrolls.");
+        }
+        return element;
+    }
+
+    private boolean isDisplayed(MobileElement mobileElement) {
+        try {
+            return mobileElement.isDisplayed();
+        } catch (WebDriverException e) {
+            return false;
+        }
     }
 }
