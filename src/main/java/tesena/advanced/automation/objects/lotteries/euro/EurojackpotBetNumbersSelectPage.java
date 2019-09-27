@@ -5,6 +5,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import tesena.advanced.automation.annotations.AndroidXpath;
+import tesena.advanced.automation.components.Component;
 import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.PageObject;
 import tesena.advanced.automation.objects.lotteries.LotteryNumbersSelectPage;
@@ -12,7 +13,7 @@ import tesena.advanced.automation.objects.lotteries.LotteryNumbersSelectPage;
 public class EurojackpotBetNumbersSelectPage extends LotteryNumbersSelectPage {
 
     @AndroidXpath(xpath = "//*[contains(@resource-id, 'recyclerAuxColumnTip')]")
-    private MobileElement secondRow;
+    private Component secondRow;
 
     public EurojackpotBetNumbersSelectPage(Driver driver) {
         super(driver);

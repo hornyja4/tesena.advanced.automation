@@ -50,8 +50,8 @@ public class Driver {
                         .stream()
                         .filter(WebElement::isDisplayed)
                         .findFirst()
-                        .orElseGet(null);
-            } catch (NoSuchElementException | StaleElementReferenceException e) {
+                        .get();
+            } catch (NoSuchElementException | StaleElementReferenceException | java.util.NoSuchElementException e) {
                 return null;
             }
         };
