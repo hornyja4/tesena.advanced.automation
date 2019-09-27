@@ -1,6 +1,8 @@
 package tesena.advanced.automation.logger;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -17,6 +19,16 @@ public class LogAspect {
 
     @Pointcut("execution(* *.*(..)) && this(tesena.advanced.automation.objects.PageObject+)")
     public void objectsMethods() {
+    }
+
+    @Around(value = "componentsMethods() || objectsMethods()")
+    public Object logPerformance(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        long startMilis = System.currentTimeMillis();
+        Object object = proceedingJoinPoint.proceed();
+        MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
+        String methodName = methodSignature.getMethod().getName();
+        TestLogger.getLogger().info(methodName + ":" + (System.currentTimeMillis() - startMilis));
+        return object;
     }
 
     @Before(value = "componentsMethods() || objectsMethods()")
