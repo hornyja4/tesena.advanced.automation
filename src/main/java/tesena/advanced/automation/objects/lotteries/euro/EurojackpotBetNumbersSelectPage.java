@@ -4,15 +4,17 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
+import tesena.advanced.automation.annotations.AndroidXpath;
+import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.PageObject;
 import tesena.advanced.automation.objects.lotteries.LotteryNumbersSelectPage;
 
 public class EurojackpotBetNumbersSelectPage extends LotteryNumbersSelectPage {
 
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'recyclerAuxColumnTip')]")
+    @AndroidXpath(xpath = "//*[contains(@resource-id, 'recyclerAuxColumnTip')]")
     private MobileElement secondRow;
 
-    public EurojackpotBetNumbersSelectPage(AppiumDriver<MobileElement> driver) {
+    public EurojackpotBetNumbersSelectPage(Driver driver) {
         super(driver);
     }
 
@@ -28,7 +30,7 @@ public class EurojackpotBetNumbersSelectPage extends LotteryNumbersSelectPage {
         if (numbers.length != 2) {
             throw new RuntimeException("Count of bet numbers must be equal to 2");
         }
-        scrollToElement(buttonFinish);
+        buttonFinish.scrollDownTo();
         for (String number: numbers) {
             secondRow.findElement(By.xpath(".//*[@text='" + number + "']")).click();
         }
@@ -36,7 +38,7 @@ public class EurojackpotBetNumbersSelectPage extends LotteryNumbersSelectPage {
     }
 
     public EurojackpotNewBetPage done() {
-        scrollToElement(buttonFinish).click();
+        buttonFinish.scrollDownTo().click();
         return new EurojackpotNewBetPage(driver);
     }
 }

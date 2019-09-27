@@ -1,13 +1,11 @@
 package tesena.advanced.automation.objects.lotteries.sportka;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.lotteries.LotteryNewBetPage;
-import tesena.advanced.automation.objects.lotteries.euro.EurojackpotBetNumbersSelectPage;
 
 public class SportkaNewBetPage extends LotteryNewBetPage {
 
-    public SportkaNewBetPage(AppiumDriver<MobileElement> driver) {
+    public SportkaNewBetPage(Driver driver) {
         super(driver);
     }
 

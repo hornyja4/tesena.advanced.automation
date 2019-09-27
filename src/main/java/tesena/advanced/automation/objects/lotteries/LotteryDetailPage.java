@@ -1,21 +1,16 @@
 package tesena.advanced.automation.objects.lotteries;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import tesena.advanced.automation.annotations.AndroidXpath;
+import tesena.advanced.automation.components.Component;
+import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.PageObject;
 
 public class LotteryDetailPage extends PageObject {
 
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'buttonMakeABet')]")
-    protected MobileElement betButton;
+    @AndroidXpath(xpath = "//*[contains(@resource-id, 'buttonMakeABet')]")
+    protected Component betButton;
 
-    public LotteryDetailPage(AppiumDriver<MobileElement> driver) {
+    public LotteryDetailPage(Driver driver) {
         super(driver);
-    }
-
-    @Override
-    public void synchronize() {
-        waitForElement(betButton);
     }
 }

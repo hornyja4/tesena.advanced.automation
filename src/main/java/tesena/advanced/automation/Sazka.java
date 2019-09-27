@@ -10,12 +10,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import tesena.advanced.automation.driver.Driver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Sazka {
-    protected AppiumDriver<MobileElement> driver;
+    protected Driver driver;
 
     @BeforeClass
     @Parameters({"appPackage", "appActivity", "noReset", "fullReset", "server"})
@@ -35,7 +36,7 @@ public class Sazka {
         capabilities.setCapability(MobileCapabilityType.NO_RESET, noReset);
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, fullReset);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "mobile");
-        this.driver = new AndroidDriver<>(new URL(server), capabilities);
+        this.driver = new Driver(capabilities, server);
     }
 
     @AfterClass

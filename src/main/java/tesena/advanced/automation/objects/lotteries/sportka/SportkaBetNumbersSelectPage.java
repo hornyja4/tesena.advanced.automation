@@ -4,12 +4,13 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
+import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.lotteries.LotteryNumbersSelectPage;
 import tesena.advanced.automation.objects.lotteries.euro.EurojackpotNewBetPage;
 
 public class SportkaBetNumbersSelectPage extends LotteryNumbersSelectPage {
 
-    public SportkaBetNumbersSelectPage(AppiumDriver<MobileElement> driver) {
+    public SportkaBetNumbersSelectPage(Driver driver) {
         super(driver);
     }
 
@@ -22,7 +23,7 @@ public class SportkaBetNumbersSelectPage extends LotteryNumbersSelectPage {
     }
 
     public SportkaNewBetPage done() {
-        scrollToElement(buttonFinish).click();
+        buttonFinish.scrollDownTo().click();
         return new SportkaNewBetPage(driver);
     }
 }
