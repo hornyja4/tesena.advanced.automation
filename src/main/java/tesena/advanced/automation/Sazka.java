@@ -24,7 +24,7 @@ public class Sazka {
             @Optional("true") boolean noReset,
             @Optional("false") boolean fullReset,
             @Optional("http://localhost:4723/wd/hub") String server
-    ) throws MalformedURLException {
+    ) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setPlatform(Platform.ANDROID);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
@@ -39,8 +39,5 @@ public class Sazka {
 
     @AfterClass
     public void terminate() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

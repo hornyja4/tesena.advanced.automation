@@ -11,14 +11,10 @@ public class SazkaTestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        String testName = result.getTestClass().getRealClass().getSimpleName();
-        String fileName = "reports" + File.separator + testName + ".log";
-        TestLogger.init(testName, fileName);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-
     }
 
     @Override
