@@ -26,9 +26,10 @@ public class SazkaTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setPlatform(Platform.ANDROID);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        //capabilities.setCapability("appPackage", appPackage);
-        //capabilities.setCapability("appActivity", appActivity);
-        capabilities.setCapability("app", "C:\\Users\\horny\\Desktop\\SmartDriver\\advanced-automation\\src\\main\\resources\\sazka.apk");
+        capabilities.setCapability("appPackage", appPackage);
+        capabilities.setCapability("appActivity", appActivity);
+        //capabilities.setCapability("appWaitActivity", "");
+        //capabilities.setCapability("app", "C:\\Users\\horny\\Desktop\\SmartDriver\\advanced-automation\\src\\main\\resources\\sazka.apk");
         capabilities.setCapability("appWaitDuration", 50000);
         capabilities.setCapability(MobileCapabilityType.NO_RESET, noReset);
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, fullReset);
