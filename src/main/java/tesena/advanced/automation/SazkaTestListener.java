@@ -3,9 +3,6 @@ package tesena.advanced.automation;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import tesena.advanced.automation.logger.TestLogger;
-
-import java.io.File;
 
 public class SazkaTestListener implements ITestListener {
 

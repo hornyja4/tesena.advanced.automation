@@ -1,20 +1,18 @@
 package tesena.advanced.automation;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import tesena.advanced.automation.driver.Driver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 @Listeners(SazkaTestListener.class)
-public class Sazka {
-    protected Driver driver;
+public class SazkaTest {
+    protected AndroidDriver<MobileElement> driver;
 
     @BeforeClass
     @Parameters({"appPackage", "appActivity", "noReset", "fullReset", "server"})
@@ -24,7 +22,7 @@ public class Sazka {
             @Optional("true") boolean noReset,
             @Optional("false") boolean fullReset,
             @Optional("http://localhost:4723/wd/hub") String server
-    ) {
+    ) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setPlatform(Platform.ANDROID);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
@@ -34,10 +32,13 @@ public class Sazka {
         capabilities.setCapability(MobileCapabilityType.NO_RESET, noReset);
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, fullReset);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "mobile");
-        this.driver = new Driver(capabilities, server);
+        driver = new AndroidDriver<>(new URL(server), capabilities);
     }
 
     @AfterClass
     public void terminate() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
