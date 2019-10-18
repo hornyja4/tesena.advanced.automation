@@ -1,5 +1,6 @@
 package tesena.advanced.automation.tests;
 
+import org.apache.logging.log4j.LogManager;
 import org.testng.annotations.Test;
 import tesena.advanced.automation.SazkaTest;
 import tesena.advanced.automation.objects.lotteries.HomePage;

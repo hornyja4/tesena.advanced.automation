@@ -3,20 +3,17 @@ package tesena.advanced.automation.objects.lotteries;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import tesena.advanced.automation.components.Button;
+import tesena.advanced.automation.driver.Driver;
 import tesena.advanced.automation.objects.PageObject;
 
 public class EurojackpotPage extends PageObject {
 
     @AndroidFindBy(xpath = "//*[contains(@resource-id,'buttonMakeABet')]")
-    private MobileElement betButton;
+    private Button betButton;
 
-    public EurojackpotPage(AndroidDriver<MobileElement> driver) {
+    public EurojackpotPage(Driver driver) {
         super(driver);
-    }
-
-    @Override
-    public void synchronize() {
-        waitForElement(betButton);
     }
 
     public EurojackpotBetPage bet() {

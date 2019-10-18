@@ -21,10 +21,10 @@
     </Appenders>
     <Loggers>
         <Logger name="TestLogger" level="TRACE" includeLocation="false">
-            <AppenderRef ref="TestAppender"/>
+            <AppenderRef ref="Console"/>
         </Logger>
         <Root level="WARN" includeLocation="false">
-            <AppenderRef ref="Console"/>
+            <!--  -->
         </Root>
     </Loggers>
 </Configuration>
